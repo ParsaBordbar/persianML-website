@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Tanha";
+  src:
+    url("/fonts/Tanha.woff2") format("woff2"),
+    url("/fonts/Tanha.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ASade";
+  src: url("/fonts/ASade.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kamran";
+  src: url("/fonts/Kamran.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mahsa";
+  src: url("/fonts/Mahsa.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Paeez";
+  src: url("/fonts/Paeez.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Badkhat1";
+  src: url("/fonts/Badkhat1.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Badkhat2";
+  src: url("/fonts/Badkhat2.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Parvaz";
+  src: url("/fonts/Parvaz.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hekayat";
+  src: url("/fonts/Hekayat.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-night: #0b1126;
+  --color-lapis: #131d40;
+  --color-paper: #f1ecdf;
+  --color-paper-dim: #b9b4a6;
+  --color-saffron: #e8a33d;
+  --color-firouzeh: #45c4b0;
+
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-fa: "Vazirmatn", "Archivo", system-ui, sans-serif;
+  --font-fa-display: "Tanha", "Vazirmatn", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--color-night);
+  color: var(--color-paper);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+}
+
+html[dir="rtl"] body {
+  font-family: var(--font-fa);
+}
+
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3 {
+  font-family: var(--font-fa-display);
+  font-weight: normal;
+}
+
+::selection {
+  background-color: var(--color-saffron);
+  color: var(--color-night);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-firouzeh);
+  outline-offset: 3px;
+}
+
+@keyframes scan-sweep {
+  0% {
+    transform: translateX(-110%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+}
+
+@keyframes box-draw {
+  from {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes label-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scan-beam {
+  animation: scan-sweep 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+}
+
+.ocr-box {
+  opacity: 0;
+  animation: box-draw 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.ocr-label {
+  opacity: 0;
+  animation: label-in 0.4s ease-out both;
+}
+
+.rise {
+  animation: rise-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .scan-beam {
+    display: none;
+  }
+  .ocr-box,
+  .ocr-label,
+  .rise {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
