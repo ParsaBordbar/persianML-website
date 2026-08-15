@@ -429,9 +429,6 @@ const resources = {
         members: [
           { name: 'رضا سیار', handle: 'Reza2kn' },
           { name: 'محمد شجاعی', handle: 'mshojaei77' },
-          { name: 'مسعود مرندی', handle: 'masoudmarandi' },
-          { name: 'حسن موحد', handle: 'hasanmova' },
-          { name: 'مصطفی رضایی', handle: 'mostafa-mr' },
         ],
       },
       live: {
