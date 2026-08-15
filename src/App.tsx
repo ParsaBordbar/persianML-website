@@ -124,7 +124,11 @@ export default function App() {
       <header className="sticky top-0 z-40 border-b border-paper/10 bg-night/85 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-4">
           <a href="#top" className="flex min-w-0 shrink items-center gap-2.5">
-            <img src="/favicon-64.png" alt="" className="h-7 w-7 shrink-0" />
+            <img
+              src={`${import.meta.env.BASE_URL}favicon-64.png`}
+              alt=""
+              className="h-7 w-7 shrink-0"
+            />
             <span className="font-display text-lg font-bold tracking-tight whitespace-nowrap">
               PersianML
             </span>
@@ -565,17 +569,30 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-10 text-xs text-paper-dim">
-        <p>{t('footer.line')}</p>
-        <a
-          href={`${HF}/PersianML`}
-          target="_blank"
-          rel="noreferrer"
-          dir="ltr"
-          className="font-mono hover:text-paper"
-        >
-          huggingface.co/PersianML ↗
-        </a>
+      <footer className="mx-auto max-w-6xl px-5 py-10 text-xs text-paper-dim">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <p>{t('footer.line')}</p>
+          <a
+            href={`${HF}/PersianML`}
+            target="_blank"
+            rel="noreferrer"
+            dir="ltr"
+            className="font-mono hover:text-paper"
+          >
+            huggingface.co/PersianML ↗
+          </a>
+        </div>
+        <p className="mt-6 border-t border-paper/10 pt-6 text-center">
+          {t('footer.designedBy')}{' '}
+          <a
+            href="https://github.com/ParsaBordbar"
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium text-firouzeh underline-offset-4 hover:underline"
+          >
+            {isFa ? 'پارسا بردبار' : 'Parsa Bordbar'}
+          </a>
+        </p>
       </footer>
     </div>
   )

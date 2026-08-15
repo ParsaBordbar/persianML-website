@@ -1,32 +1,28 @@
-# React + TypeScript + Vite
+# PersianML website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Landing page for the PersianML community — Bina OCR models, datasets, benchmarks. React + TypeScript + Vite + Tailwind, bilingual (FA default / EN) via i18next.
 
-Currently, two official plugins are available:
+Live: https://parsabordbar.github.io/persianML-website/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Develop
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Build
+
+```bash
+npm run build     # tsc -b && vite build → dist/
+npm run preview
+npm run lint
+```
+
+## Deploy
+
+Pushing to `main` runs `.github/workflows/deploy.yml`: build, then publish `dist/` to GitHub Pages. Enable it once in **Settings → Pages → Source: GitHub Actions**.
+
+`vite.config.ts` sets `base: '/persianML-website/'` for the project-page subpath. Runtime references to files in `public/` use `import.meta.env.BASE_URL`. Change both the base and that URL if the repo is renamed or moved to a custom domain (custom domain → `base: '/'` plus a `public/CNAME`).
+
+`deploy/bina.bbrand.ir.conf` is an nginx config for self-hosting the same `dist/` output; unused by GitHub Pages.

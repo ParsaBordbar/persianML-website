@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 
 const MODEL = 'PersianML/Bina-0.1-Koochik'
 
-const DEMO_IMAGE = '/demo/sample.png'
+const DEMO_IMAGE = `${import.meta.env.BASE_URL}demo/sample.png`
 const DEMO_RESULT = [
   '<div data-label="text" data-bbox="485 94 930 138">بینا، مدل متن‌باز بازشناسی نوشتار فارسی است.</div>',
   '<div data-label="text" data-bbox="544 231 930 298">این جمله با دست‌خط پاییز نوشته شده است.</div>',

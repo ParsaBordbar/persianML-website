@@ -223,6 +223,7 @@ const resources = {
       },
       footer: {
         line: 'PersianML — open models, datasets, and benchmarks for Persian AI. Not an official PersianML site.',
+        designedBy: 'Designed by',
       },
     },
   },
@@ -448,6 +449,7 @@ const resources = {
       },
       footer: {
         line: 'PersianML — مدل‌ها، دیتاست‌ها و بنچمارک‌های باز برای هوش مصنوعی فارسی. این وب‌سایت، نمایی غیررسمی از فعالیت‌های جامعهٔ PersianML است.',
+        designedBy: 'طراحی از',
       },
     },
   },
