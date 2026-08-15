@@ -80,6 +80,7 @@ export default function App() {
   const { t, i18n } = useTranslation()
   const isFa = i18n.language === 'fa'
   const [handIdx, setHandIdx] = useState(0)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     document.documentElement.dir = i18n.dir()
@@ -121,21 +122,23 @@ export default function App() {
   return (
     <div className="min-h-screen bg-night text-paper">
       <header className="sticky top-0 z-40 border-b border-paper/10 bg-night/85 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-          <a href="#top" className="flex items-center gap-2.5">
-            <img src="/favicon-64.png" alt="" className="h-7 w-7" />
-            <span className="font-display text-lg font-bold tracking-tight">PersianML</span>
-            <span className="hidden font-mono text-[10px] uppercase tracking-widest text-paper-dim sm:inline">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-4">
+          <a href="#top" className="flex min-w-0 shrink items-center gap-2.5">
+            <img src="/favicon-64.png" alt="" className="h-7 w-7 shrink-0" />
+            <span className="font-display text-lg font-bold tracking-tight whitespace-nowrap">
+              PersianML
+            </span>
+            <span className="hidden font-mono text-[10px] uppercase tracking-widest text-paper-dim lg:inline">
               {t('hero.license')}
             </span>
           </a>
-          <nav className="flex items-center gap-4 md:gap-6">
+          <nav className="flex shrink-0 items-center gap-3 md:gap-6">
             <div className="hidden items-center gap-6 md:flex">
               {navItems.map((n) => (
                 <a
                   key={n.href}
                   href={n.href}
-                  className="text-sm text-paper-dim transition-colors hover:text-paper"
+                  className="text-sm whitespace-nowrap text-paper-dim transition-colors hover:text-paper"
                 >
                   {n.label}
                 </a>
@@ -153,12 +156,60 @@ export default function App() {
               href={`${HF}/PersianML`}
               target="_blank"
               rel="noreferrer"
-              className="rounded-sm bg-saffron px-3 py-1.5 text-sm font-semibold text-night transition-opacity hover:opacity-85"
+              className="hidden rounded-sm bg-saffron px-3 py-1.5 text-sm font-semibold whitespace-nowrap text-night transition-opacity hover:opacity-85 md:inline-block"
             >
               {t('nav.hf')}
             </a>
+            <button
+              type="button"
+              onClick={() => setMenuOpen((o) => !o)}
+              className="rounded-sm border border-paper/25 p-1.5 transition-colors hover:border-paper/60 md:hidden"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+              aria-label={isFa ? 'منو' : 'Menu'}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                {menuOpen ? (
+                  <path d="M6 6l12 12M18 6L6 18" />
+                ) : (
+                  <path d="M4 7h16M4 12h16M4 17h16" />
+                )}
+              </svg>
+            </button>
           </nav>
         </div>
+        {menuOpen && (
+          <div id="mobile-menu" className="border-t border-paper/10 md:hidden">
+            <div className="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-3">
+              {navItems.map((n) => (
+                <a
+                  key={n.href}
+                  href={n.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-sm px-2 py-2.5 text-sm text-paper-dim transition-colors hover:bg-paper/5 hover:text-paper"
+                >
+                  {n.label}
+                </a>
+              ))}
+              <a
+                href={`${HF}/PersianML`}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setMenuOpen(false)}
+                className="mt-2 rounded-sm bg-saffron px-4 py-2.5 text-center text-sm font-semibold text-night transition-opacity hover:opacity-85"
+              >
+                {t('nav.hf')}
+              </a>
+            </div>
+          </div>
+        )}
       </header>
 
       <main id="top">
